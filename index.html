@@ -1,275 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moodiary</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup - Moodiary</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="screen">
-        <div class="notch"></div>
-        
-        <!-- Sign Up Screen -->
-        <div class="auth-container" id="signup-screen">
-            <div class="logo">
-                <h1>Moodiary</h1>
-                <p>Track moods. Share vibes. Heal together.</p>
-            </div>
-            
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" placeholder="">
-            </div>
-            
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" placeholder="">
-            </div>
-            
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" placeholder="">
-            </div>
-            
-            <button class="auth-button" onclick="showHome()">Sign Up</button>
-            
-            <div class="auth-link">
-                <span>Already Have An Account?</span>
-                <a href="#" onclick="showSignIn()">Sign In</a>
-            </div>
-            
-            <div class="illustration-left">
-                <svg viewBox="0 0 120 80" style="width: 100%; height: 100%;">
-                    <path d="M20 40 Q40 20 60 40 Q80 60 100 40" stroke="#ff6b9d" stroke-width="3" fill="none"/>
-                    <circle cx="30" cy="35" r="8" fill="#333"/>
-                    <circle cx="70" cy="45" r="6" fill="#ff6b9d"/>
-                </svg>
-            </div>
-            
-            <div class="illustration-right">
-                <svg viewBox="0 0 80 80" style="width: 100%; height: 100%;">
-                    <circle cx="40" cy="40" r="35" fill="#333"/>
-                    <circle cx="40" cy="35" r="3" fill="white"/>
-                    <path d="M25 50 Q40 35 55 50" stroke="#ff6b9d" stroke-width="3" fill="none"/>
-                    <circle cx="40" cy="25" r="2" fill="#ff6b9d"/>
-                </svg>
-            </div>
-        </div>
-        
-        <!-- Sign In Screen -->
-        <div class="auth-container hidden" id="signin-screen">
-            <div class="logo">
-                <h1>Moodiary</h1>
-                <p>Track moods. Share vibes. Heal together.</p>
-            </div>
-            
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" placeholder="">
-            </div>
-            
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" placeholder="">
-            </div>
-            
-            <button class="auth-button" onclick="showHome()">Sign In</button>
-            
-            <div class="auth-link">
-                <span>Don't have an account?</span>
-                <a href="#" onclick="showSignUp()">Sign Up</a>
-            </div>
-            
-            <div class="illustration-left">
-                <svg viewBox="0 0 120 80" style="width: 100%; height: 100%;">
-                    <path d="M20 40 Q40 20 60 40 Q80 60 100 40" stroke="#ff6b9d" stroke-width="3" fill="none"/>
-                    <circle cx="30" cy="35" r="8" fill="#333"/>
-                    <circle cx="70" cy="45" r="6" fill="#ff6b9d"/>
-                </svg>
-            </div>
-            
-            <div class="illustration-right">
-                <svg viewBox="0 0 80 80" style="width: 100%; height: 100%;">
-                    <circle cx="40" cy="40" r="35" fill="#333"/>
-                    <circle cx="40" cy="35" r="3" fill="white"/>
-                    <path d="M25 50 Q40 35 55 50" stroke="#ff6b9d" stroke-width="3" fill="none"/>
-                    <circle cx="40" cy="25" r="2" fill="#ff6b9d"/>
-                </svg>
-            </div>
-        </div>
-        
-        <!-- Main App -->
-        <div class="main-app" id="main-app">
-            <!-- Menu Button -->
-            <div class="menu-button" onclick="toggleSidebar()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            
-            <!-- Home Screen -->
-            <div id="home-screen">
-                <div class="header">
-                    <h1>How are you feeling today?</h1>
-                    <p>Don't forget to record your journal entry!</p>
-                </div>
-                
-                <div class="content">
-                    <div class="recommendations">
-                        <h2>Recommended</h2>
-                        <div class="mood-categories">
-                            <div class="mood-category">
-                                <h3>Need to cry?</h3>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="mood-category">
-                                <h3>Something Upbeat?</h3>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="mood-category">
-                                <h3>Some chill music?</h3>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="mood-category">
-                                <h3>Future Energy?</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="home-illustration">
-                    <svg viewBox="0 0 80 60" style="width: 100%; height: 100%;">
-                        <ellipse cx="50" cy="40" rx="25" ry="15" fill="#ccc"/>
-                        <circle cx="35" cy="35" r="8" fill="#ff6b9d"/>
-                        <path d="M45 35 Q50 30 55 35" stroke="#333" stroke-width="2" fill="none"/>
-                    </svg>
-                </div>
-            </div>
-            
-            <!-- Movies Screen -->
-            <div class="movies-section" id="movies-screen">
-                <div class="movies-header">
-                    <h1>Movies and shows</h1>
-                    <div class="nav-links">
-                        <a href="#">Projects</a>
-                        <a href="#">Contact Me</a>
-                    </div>
-                </div>
-                
-                <div class="movie-categories">
-                    <div class="movie-category">
-                        <h3>Feel-Good/Uplifting</h3>
-                        <ul class="movie-list">
-                            <li>Paddington 2 (2017)</li>
-                            <li>Julie & Julia (2009)</li>
-                            <li>Amelie (2001)</li>
-                            <li>The Intouchables (2011)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="movie-category">
-                        <h3>Grow Through It</h3>
-                        <ul class="movie-list">
-                            <li>The Secret Life of Walter Mitty (2013)</li>
-                            <li>Eat Pray Love (2010)</li>
-                            <li>Into the Wild (2007)</li>
-                            <li>Little Miss Sunshine (2006)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="movie-category">
-                        <h3>It's Okay to Not Be Okay</h3>
-                        <ul class="movie-list">
-                            <li>A Beautiful Mind (2001)</li>
-                            <li>Silver Linings Playbook (2012)</li>
-                            <li>The Perks of Being a Wallflower (2012)</li>
-                            <li>Good Will Hunting (1997)</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="break-section">
-                    <h2>Need A Break?</h2>
-                    <p class="break-text">Press pause on the heavy stuff and let yourself live a little. Book a random spa date just because you deserve it. Make a giant cup of hot cocoa and drink it in the bath like royalty. Watch the cheesiest movie you can find, or drive to a place you've never been just to chase a new view. Sing (badly) to your favorite songs. Buy yourself flowers. Laugh at stupid memes. Happiness isn't just the finish line — it's the little ridiculous, sparkly, everyday things too. Go grab some.</p>
-                </div>
-                
-                <div class="home-illustration">
-                    <svg viewBox="0 0 80 60" style="width: 100%; height: 100%;">
-                        <ellipse cx="50" cy="40" rx="25" ry="15" fill="#ccc"/>
-                        <circle cx="35" cy="35" r="8" fill="#ff6b9d"/>
-                        <path d="M45 35 Q50 30 55 35" stroke="#333" stroke-width="2" fill="none"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-item" onclick="showHome()">
-                <div class="sidebar-icon"></div>
-                Friends
-            </div>
-            <div class="sidebar-item">
-                <div class="sidebar-icon"></div>
-                Journal
-            </div>
-            <div class="sidebar-item">
-                <div class="sidebar-icon"></div>
-                About Me
-            </div>
-        </div>
-        
-        <!-- Sidebar Overlay -->
-        <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+  <div class="screen auth-container">
+    <div class="logo">
+      <h1>Moodiary</h1>
+      <p>Your mood, your mirror.</p>
     </div>
 
-    <script>
-        function showSignUp() {
-            document.getElementById('signin-screen').classList.add('hidden');
-            document.getElementById('signup-screen').classList.remove('hidden');
-        }
+    <div class="form-group">
+      <label for="signup-email">Email</label>
+      <input type="email" id="signup-email" placeholder="Enter your email" />
+    </div>
+    <div class="form-group">
+      <label for="signup-password">Password</label>
+      <input type="password" id="signup-password" placeholder="Enter your password" />
+    </div>
 
-        function showSignIn() {
-            document.getElementById('signup-screen').classList.add('hidden');
-            document.getElementById('signin-screen').classList.remove('hidden');
-        }
+    <button class="auth-button" id="signup-btn">Sign Up</button>
 
-        function showHome() {
-            document.getElementById('signup-screen').style.display = 'none';
-            document.getElementById('signin-screen').style.display = 'none';
-            document.getElementById('main-app').classList.add('active');
-            document.getElementById('home-screen').style.display = 'block';
-            document.getElementById('movies-screen').classList.remove('active');
-        }
+    <div class="auth-link">
+      <span>Already have an account?</span>
+      <a href="signin.html">Sign in</a> <!-- 👈 THIS MUST BE A LINK -->
+    </div>
+  </div>
 
-        function showMovies() {
-            document.getElementById('home-screen').style.display = 'none';
-            document.getElementById('movies-screen').classList.add('active');
-        }
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebar-overlay');
-            
-            sidebar.classList.add('open');
-            overlay.classList.add('active');
-        }
-
-        function closeSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebar-overlay');
-            
-            sidebar.classList.remove('open');
-            overlay.classList.remove('active');
-        }
-
-        // Auto-show movies section after 3 seconds on home
-        setTimeout(() => {
-            if (document.getElementById('main-app').classList.contains('active')) {
-                showMovies();
-            }
-        }, 3000);
-    </script>
+  <script src="auth.js"></script>
 </body>
 </html>
