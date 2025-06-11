@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Signup - Moodiary</title>
+  <title>Sign In - Moodiary</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">	
+
   <div class="screen auth-container">
     <div class="logo">
       <h1>Moodiary</h1>
@@ -15,25 +17,23 @@
     <img src="images/Catchingup.png" class="bottom-left-img" alt="Moodiary Logo" width="200">
     <img src="images/Loving.png" class="right-image" alt="Hugging character" />
 
+
     <div class="form-group">
-      <label for="signup-email">Email</label>
-      <input type="email" id="signup-email" placeholder="Enter your email" />
+      <label for="signin-email">Email</label>
+      <input type="email" id="signin-email" placeholder="Enter your email" />
     </div>
     <div class="form-group">
-      <label for="signup-password">Password</label>
-      <input type="password" id="signup-password" placeholder="Enter your password" />
+      <label for="signin-password">Password</label>
+      <input type="password" id="signin-password" placeholder="Enter your password" />
     </div>
 
-    <button class="auth-button" id="signup-btn">Sign Up</button>
+    <button class="auth-button" id="signin-btn">Sign In</button>
 
     <div class="auth-link">
-      <span>Already have an account?</span>
-      <a href="signin.html">Sign in</a> <!-- 👈 THIS MUST BE A LINK -->
+      <span>Don't have an account?</span>
+      <a href="index.html">Sign up</a>
     </div>
   </div>
-<div id="messages-screen" class="screen hidden">
-  <!-- messages will load here -->
-</div>
 
   <script src="auth.js"></script>
 </body>
