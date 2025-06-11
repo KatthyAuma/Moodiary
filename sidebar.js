@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function hideAllScreens() {
   document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+  
 }
 
 });
