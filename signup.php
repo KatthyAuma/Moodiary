@@ -1,34 +1,37 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$password = 'Sebalimo06!';
-$database = 'moodiary';
+require_once 'connection.php'; // ✅ Include DB connection
 
-// Connect to database
-$conn = new mysqli($host, $user, $password, $database);
-if ($conn->connect_error) {
-    die(json_encode(['status' => 'error', 'message' => 'Database connection failed.']));
+$data = json_decode(file_get_contents("php://input"), true);
+$email = $data['email'] ?? '';
+$password = $data['password'] ?? '';
+
+// Validate email and password
+if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password) < 6) {
+    echo json_encode(['status' => 'error', 'message' => 'Invalid email or password.']);
+    exit;
 }
 
-// Get raw POST data
-$data = json_decode(file_get_contents("php://input"), true);
+// Check if email already exists
+$stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->store_result();
 
-$email = $conn->real_escape_string($data['email']);
-$password = password_hash($data['password'], PASSWORD_DEFAULT);
-
-// Check if user already exists
-$check = $conn->query("SELECT * FROM users WHERE email = '$email'");
-if ($check->num_rows > 0) {
+if ($stmt->num_rows > 0) {
     echo json_encode(['status' => 'error', 'message' => 'Email already exists.']);
     exit;
 }
 
-// Insert new user
-$sql = "INSERT INTO users (email, password) VALUES ('$email', '$password')";
-if ($conn->query($sql)) {
-    echo json_encode(['status' => 'success', 'message' => 'User registered successfully.']);
+// Hash and insert new user
+$hashed = password_hash($password, PASSWORD_DEFAULT);
+$insert = $conn->prepare("INSERT INTO users (email, password_hash) VALUES (?, ?)");
+$insert->bind_param("ss", $email, $hashed);
+
+if ($insert->execute()) {
+    echo json_encode(['status' => 'success', 'message' => 'Registration successful.']);
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Registration failed.']);
 }
+
 $conn->close();
 ?>
