@@ -7,9 +7,24 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = document.getElementById("signup-password").value;
 
       if (email && password) {
-        localStorage.setItem("moodiary_user", JSON.stringify({ email, password }));
-        alert("Signup successful!");
-        window.location.href = "signin.html";
+        fetch("backend/signup.php", {
+          method: "POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({email,password}),
+      })
+      .then(res => res.json())
+.then(data => {
+  if (data.status === "success") {
+    alert(data.message);
+    window.location.href = "signin.html";
+  } else {
+    alert("Signup failed: " + data.message);
+  }
+})
+.catch(err => {
+  console.error("Signup error:", err);
+  alert("Something went wrong during signup.");
+});
       } else {
         alert("Please fill in all fields.");
       }
@@ -22,14 +37,26 @@ document.addEventListener("DOMContentLoaded", () => {
     signinBtn.addEventListener("click", () => {
       const email = document.getElementById("signin-email").value;
       const password = document.getElementById("signin-password").value;
-      const storedUser = JSON.parse(localStorage.getItem("moodiary_user"));
+      fetch("backend/signin.php", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ email, password }),
+})
+.then(res => res.json())
+.then(data => {
+  if (data.status === "success") {
+    sessionStorage.setItem("moodiary_logged_in", "true");
+    sessionStorage.setItem("moodiary_user_email", email); // optional
+    window.location.href = "home.html";
+  } else {
+    alert("Signin failed: " + data.message);
+  }
+})
+.catch(err => {
+  console.error("Signin error:", err);
+  alert("Something went wrong during signin.");
+});
 
-      if (storedUser && email === storedUser.email && password === storedUser.password) {
-        sessionStorage.setItem("moodiary_logged_in", "true");
-        window.location.href = "home.html";
-      } else {
-        alert("Invalid credentials.");
-      }
     });
   }
 

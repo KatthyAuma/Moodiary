@@ -474,3 +474,140 @@ button:hover {
   z-index: 1;
   pointer-events: none;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #e5ddd5;
+}
+
+.chat-container {
+  display: flex;
+  margin-left: 100px;
+  height: 90vh;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 30%;
+  background-color: #d4b8a8;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.chat-list {
+  list-style: none;
+}
+
+.chat-list li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chat-list li.active,
+.chat-list li:hover {
+  background-color: #d4b8a8;
+}
+
+/* Chat Window */
+.chat-window {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+}
+
+.chat-header {
+  background-color: #d4b8a8;
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.message {
+  max-width: 50%;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-left:20px;
+}
+
+.received {
+  background-color: #fff;
+  align-self: flex-start;
+  border: 1px solid #ccc;
+}
+
+.sent {
+  background-color: #D8B4A0;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+/* Input */
+.message-input {
+  display: flex;
+  padding: 15px;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  font-size: 14px;
+}
+
+.message-input button {
+  margin-left: 5px;
+  padding: 5px 5px;
+  background-color: #D8B4A0;
+  border: none;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+}
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #f9cbbd;
+  z-index: 1000; /* Make sure it's above other elements */
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+/* When open */
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Content */
+.main-content {
+  padding-left: 0; /* No need to shift content */
+}
